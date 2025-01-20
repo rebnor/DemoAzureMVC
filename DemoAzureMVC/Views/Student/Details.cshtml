@@ -1,0 +1,56 @@
+﻿@model DemoAzureMVC.Shared.Student
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="info-container">
+    <div class="image-content">
+        @if (Model.PictureUrl != null)
+        {
+            @if (Model.PictureUrl.Contains("http"))
+            {
+                <img src="@Model.PictureUrl" width="300" class="right-img" />
+                <p class="pic-link">Picture url: <a href="@Model.PictureUrl">@Model.PictureUrl</a></p>
+
+            }
+            else
+            {
+                <img src="~/css/@Model.PictureUrl" width="300" class="right-img" />
+                <p>Picture url: @Model.PictureUrl</p>
+
+            }
+        }
+        else
+        {
+            if (Model.IsWizard)
+            {
+                <img src="~/css/wizardNoPhoto.png" width="300" class="right-img" />
+            }
+            else{
+                <img src="~/css/witchNoPhoto.png" width="300" class="right-img" />
+
+            }
+            <p>Picture url: No picture</p>
+        }
+    </div>
+    <div class="text-content mb-3">
+        <div class="info-header">
+            @Model.FullName
+        </div>
+        <p>Id: @Model.Id</p>
+        <p>Name: @Model.FirstName @Model.LastName</p>
+        @if(Model.IsWizard){
+        <p>Wizard</p>
+        }
+        else
+        {
+            <p>Witch</p>
+        }
+    </div>
+    <div class="actions">
+        <a asp-action="Update" asp-controller="Student" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Delete" asp-controller="Student" asp-route-id="@Model.Id" class="delete">Delete</a> |
+        <a asp-action="Index" asp-controller="Student">Back to List</a>
+    </div>
+</div>

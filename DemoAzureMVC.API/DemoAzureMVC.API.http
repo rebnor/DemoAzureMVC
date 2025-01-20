@@ -1,0 +1,6 @@
+@DemoAzureMVC.API_HostAddress = https://demoazuremvcapi-app-202501071801.livelyocean-dfa16904.northeurope.azurecontainerapps.io
+
+GET {{DemoAzureMVC.API_HostAddress}}/api/Student
+Accept: application/json
+
+###

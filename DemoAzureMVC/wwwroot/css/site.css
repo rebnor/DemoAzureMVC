@@ -1,0 +1,483 @@
+/*HarryPotter*/
+@font-face {
+    font-family: "hp";
+    src: url('/css/HARRYP__.TTF');
+}
+
+@font-face {
+    font-family: "br";
+    src: url('/css/Bokor-Regular.ttf');
+}
+/*Handskrivet*/
+@font-face {
+    font-family: "nr";
+    src: url('/css/Nushbye-Regular.otf');
+}
+
+@font-face {
+    font-family: "rr";
+    src: url('/css/Religius-Regular.ttf.otf');
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Generall & Layout */
+
+html {
+    position: relative;
+    min-height: 100%;
+    color: #98735a;
+    font-size: 14px;
+    font-family: hp;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #f5f5f5;
+    background: url("walk.jpg") fixed;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: #f5f5f5;
+    border-bottom: 10px solid #102930;
+    background-color: rgba(204,192,176);
+}
+
+
+footer {
+    background-color: rgba(204,192,176);
+    font-family: nr;
+    border-top: 10px solid #102930;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.navbar-brand {
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    text-decoration: none; 
+    color: black; 
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.header-text {
+    font-size: 2.5em;
+    margin: 0;
+    padding-left: 15px;
+    font-family: hp;
+    color: #102930;
+    text-shadow: 1px 1px 3px black;
+}
+
+.slogan-text {
+    font-size: 14px;
+    color: #98735a;
+    margin: -10px 0 0 0;
+    padding: 0;
+    font-weight: 100;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #c78a57;
+    border-color: #865936;
+    margin: 10px;
+    font-size: x-large;
+    color: black;
+}
+
+    .btn-primary:hover {
+        background-color: #e7c8a3;
+        border-color: #c78a57;
+        color: white;
+    }
+
+.btn-danger {
+    background-color: #B35151;
+    border-color: #A14848;
+    margin: 10px;
+    font-size: xx-large;
+    font-family: hp;
+    padding: 0 15px;
+}
+
+
+a {
+    text-transform: none;
+    text-decoration: none;
+    font-family: br;
+    color: black;
+    text-shadow: 1px 1px 3px #5D6E7D;
+}
+
+    a:hover {
+        color: #E0AB5C;
+        color: white;
+    }
+
+button a:hover {
+    color: white;
+}
+
+h1 {
+    font-family: hp;
+    font-size: 7em;
+    color: #98735a;
+    text-shadow: 1px 1px 3px black;
+}
+
+/* Home Index */
+
+
+
+
+/* Student Index */
+.delete {
+    text-shadow: 0 0 2px red;
+}
+    .delete:hover {
+        color: red;
+        text-shadow: 0 0 2px black;
+    }
+
+table {
+    font-family: br;
+    background-color: rgba(204,192,176, 0.8);
+    text-shadow: none;
+    font-size: x-large;
+    box-shadow: 0 0 5px 2px #102930;
+}
+thead {
+    background-color: rgba(204,192,176, 0.6);
+}
+
+.delete-div {
+    background-color: rgba(224,102,102, 0.6);
+    font-family: br;
+    font-size: x-large;
+    padding: 0;
+    border-radius: 8px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: auto;
+    margin-top: 50px;
+    position: relative;
+    box-shadow: 0 0 5px 2px black;
+}
+.delete-header {
+    box-shadow: 0 10px 10px rgba(224,102,102, 0.8);
+    font-size: 2em;
+    width: 100%;
+    background-color: rgba(224,102,102, 0.8);
+    padding: 5px;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+}
+.delete-content {
+    display: flex;
+    flex-direction: row !important;
+    margin: auto;
+    margin-top: 50px;
+}
+.delete-form {
+    width: 300px;
+    margin: auto;
+    text-align: center;
+}
+    .delete-form .btn {
+        box-shadow: 0 0 5px 2px #622C2C;
+    }
+
+
+/* Details */
+.info-container {
+    color: #102930;
+    font-family: br;
+    background-color: rgba(204,192,176, 0.6);
+    font-size: x-large;
+    padding: 0;
+    border-radius: 8px;
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    margin: auto;
+    margin-top: 50px;
+    position: relative;
+    box-shadow: 0 0 5px 2px #4a3c26;
+}
+.image-content {
+    flex: 0 0 auto;
+    padding: 35px;
+}
+    .image-content img {
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 0 5px 2px #4a3c26;
+    }
+.info-header {
+    box-shadow: 0 0 5px 2px #4a3c26;
+    font-size: 2em;
+    margin-top: 15px;
+    background-color: rgba(204,192,176, 0.8);
+    padding: 5px;
+    border-radius: 8px;
+    text-align: center;
+}
+.text-content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.pic-link {
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.actions {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+}
+
+
+
+/* Create & Update */
+.center-div {
+  width: 600px;
+  margin: auto;
+  text-align:center;
+}
+#feather {
+    position:relative;
+    right: -250px;
+    bottom: 180px;
+    z-index: -2;
+}
+.background-div {
+    position: absolute;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
+    z-index: -10 !important;
+    top: 100px;
+}
+    .background-div img {
+        margin: auto;
+    }
+.opacity-img {
+    opacity: 0.2;
+    z-index: -5 !important;
+    margin: auto;
+    top: 10px;
+    position: relative;
+    top: 190px;
+    height: 20px;
+}
+form {
+    width: 400px;
+    justify-content: center;
+    margin: auto;
+    z-index: 10 !important;
+    margin-top: 85px;
+}
+
+.control-label {
+    font-family: nr;
+    font-size: xx-large;
+    letter-spacing: 2px;
+    color: #4A311E;
+}
+form .btn {
+    font-family: br;
+    margin-top: 10px;
+}
+.form-control {
+    background-color: rgba(204,192,176, 0.6);
+    border: none;
+    border-bottom: 1px solid #c0a074;
+    font-family: br;
+    padding: 0;
+    font-size: x-large;
+    letter-spacing: 2px;
+}
+.form-radio {
+    display: flex;
+    flex-direction: row;  
+    align-items: center;
+    gap: 30px;  
+    width: 200px;
+    margin: auto;
+}
+    .form-radio div {
+        display: flex;
+        align-items: center; 
+        flex-direction: row; 
+    }
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #4A311E; 
+    background-color: #f3d6b4; 
+    cursor: pointer; 
+    transition: background-color 0.3s, border-color 0.3s; 
+}
+    input[type="radio"]:checked {
+        background-color: #a79f44;
+        border-color: #726e28;
+    }
+    /* När radio-knappen är vald (checked) */
+    input[type="radio"]:checked {
+        background-color: #a79f44;
+        border-color: #726e28;
+    }
+
+    /* Hover på vald radio-knapp */
+    input[type="radio"]:checked:hover {
+        background-color: #4A311E;
+        border-color: #f3d6b4;
+    }
+        /* När radio-knappen är markerad (checked) */
+        input[type="radio"]:checked + label {
+            color: #726e28;
+        }
+
+    input[type="radio"]:hover {
+        background-color: #4A311E; 
+        border-color: #f3d6b4; 
+    }
+
+/* Justering av etiketten för att passa knappen */
+.form-radio label {
+    margin-left: 10px;
+    font-family: br;
+    font-size: 2em; 
+    color: #4A311E; 
+    cursor: pointer;
+    width: 60px;
+}
+
+    .form-radio label:hover {
+        /*color: #726e28;*/ /* Färgar texten vid hover */
+        text-shadow: 0 0 5px #4a3c26;
+    }
+
+
+
+
+
+
+
+.students {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+    .students a {
+        text-decoration: none;
+    }
+
+.student {
+    margin: 20px;
+    box-shadow: 1px 2px 5px #0F1F27;
+    width: 300px;
+    height: 350px;
+    padding: 2px;
+    position: relative;
+    background-color: white;
+    transition: filter 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.studentName {
+    font-weight: 600;
+    color: #0F1F27;
+    width: 100%;
+    text-shadow: 1px 1px 2px #D0CFBC;
+    position: absolute;
+    bottom: 9%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    z-index: 2;
+    font-family: nr;
+    letter-spacing: 2px;
+    color: #4A311E;
+}
+
+.student .image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1; 
+}
+
+    .student .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        object-position: center;
+    }
+
+.student:hover .studentName {
+    display: block;
+}
+
+.student:hover::before {
+    content: "";
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 80%;
+    height: 80%;
+    background: url("nameScroll.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+.students:hover .student {
+    filter: blur(4px);
+}
+
+    .students:hover .student:hover {
+        filter: none;
+    }
