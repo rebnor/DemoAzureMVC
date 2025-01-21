@@ -9,12 +9,15 @@ namespace DemoAzureMVC.Controllers
     public class StudentController : Controller
     {
         private readonly IStudent studentRepo;
+        private readonly ILogger<StudentController> logger;
 
-        public StudentController(IStudent studentRepo)
+        public StudentController(IStudent studentRepo, ILogger<StudentController> logger)
         {
             this.studentRepo = studentRepo;
+            this.logger = logger;
         }
 
+        // GET: Student/Index
         public async Task<ActionResult> Index()
         {
             try
@@ -22,58 +25,84 @@ namespace DemoAzureMVC.Controllers
                 var students = await studentRepo.GetAllStudentsAsync();
                 if (students != null)
                 {
-                    Console.WriteLine($"--> Fetched {students.Count} students.");
+                    logger.LogInformation($"--> Fetched {students.Count} students.");
                     return View(students);
                 }
                 else
                 {
-                    Console.WriteLine("--> No students fetched.");
-                    return View(new List<Student>()); // Returnerar tom lista om det misslyckas
+                    logger.LogInformation("--> Empty students-list fetched.");
+                    return View(new List<Student>());
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"--> Error: {ex.Message}");
+                logger.LogInformation($"--> Error occurred while fetching all students: {ex.Message}");
                 return View(new List<Student>());
             }
         }
 
-        //GET: View: Controller/Details/id
+        // GET: Student/Details/{id}
         public async Task<ActionResult> Details(int id)
         {
-            var student = await studentRepo.GetStudentByIdAsync(id);
-            if (student == null)
+            try
             {
-                return NotFound();
+                var student = await studentRepo.GetStudentByIdAsync(id);
+                if (student == null)
+                {
+                    return NotFound();
+                }
+                return View(student);
             }
-            return View(student);
+            catch (Exception ex)
+            {
+                logger.LogInformation($"--> Error occurred while fetching student by id {id}, message: {ex.Message}");
+                return RedirectToAction(nameof(Error), "Student", new { message = ex.Message });
+            }
         }
 
-        /* GET: View: Controller/Create */
+        // GET: Student/Create
         public IActionResult Create()
         {
             return View();
         }
-        /* POST: Create new student */
+
+        // POST: Create new student */
         [HttpPost]
         public async Task<ActionResult> Create(Student student)
         {
-            await studentRepo.CreateStudentAsync(student);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await studentRepo.CreateStudentAsync(student);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                logger.LogInformation($"--> Error occurred while creating student: {ex.Message}");
+                return RedirectToAction(nameof(Error), "Student", new { message = ex.Message });
+            }
         }
 
-        /* GET: View: Controller/Delete/id */
+        // GET: Student/Delete/{id}
         [HttpGet]
         public async Task<ActionResult> Delete(int id)
         {
-            var student = await studentRepo.GetStudentByIdAsync(id);
-            if (student == null)
+            try
             {
-                return NotFound();
+                var student = await studentRepo.GetStudentByIdAsync(id);
+                if (student == null)
+                {
+                    return NotFound();
+                }
+                return View(student);
             }
-            return View(student);
+            catch (Exception ex)
+            {
+                logger.LogInformation($"--> Error occurred while fetching student: {ex.Message}");
+                return RedirectToAction(nameof(Error), "Student", new { message = ex.Message });
+            }
         }
-        /* POST: Delete student */
+
+        // POST: Delete student 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
@@ -85,22 +114,31 @@ namespace DemoAzureMVC.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error occurred while deleting student: {ex.Message}");
-                return View("Error");
+                logger.LogInformation($"--> Error occurred while deleting student: {ex.Message}");
+                return RedirectToAction(nameof(Error), "Student", new { message = ex.Message });
             }
         }
 
-        /* GET: View: Controller/Update/id */
+        // GET: Student/Update/{id} 
         public async Task<ActionResult> Update(int id) 
         {
-            var student = await studentRepo.GetStudentByIdAsync(id);
-            if (student == null)
+            try
             {
-                return NotFound();
+                var student = await studentRepo.GetStudentByIdAsync(id);
+                if (student == null)
+                {
+                    return NotFound();
+                }
+                return View(student);
             }
-            return View(student);
+            catch (Exception ex)
+            {
+                logger.LogInformation($"--> Error occurred while updating student: {ex.Message}");
+                return RedirectToAction(nameof(Error), "Student", new { message = ex.Message });
+            }
         }
-        /* PUT: Update student */
+
+        // PUT: Update student 
         [HttpPost, ActionName("Update")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> UpdateConfirmed(int id, [Bind("Id,FirstName,LastName,PictureUrl,IsWizard")] Student student)
@@ -117,21 +155,16 @@ namespace DemoAzureMVC.Controllers
             }
             catch (Exception ex)
             {
-                //Console.WriteLine($"Error occurred while updating student: {ex.Message}");
-                //return View("Error");
-                ModelState.AddModelError(string.Empty, "An error occurred while updating the student.");
-                return View(student);
+                logger.LogInformation($"--> Error occurred while updating student: {ex.Message}");
+                return RedirectToAction(nameof(Error), "Student", new { message = ex.Message });
             }
         }
 
-
-
-
-
+        // Redirect to Error View with error message 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(string message)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, ErrorMessage = message });
         }
     }
 }

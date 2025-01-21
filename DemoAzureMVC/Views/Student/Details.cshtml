@@ -12,13 +12,11 @@
             {
                 <img src="@Model.PictureUrl" width="300" class="right-img" />
                 <p class="pic-link">Picture url: <a href="@Model.PictureUrl">@Model.PictureUrl</a></p>
-
             }
             else
             {
                 <img src="~/css/@Model.PictureUrl" width="300" class="right-img" />
                 <p>Picture url: @Model.PictureUrl</p>
-
             }
         }
         else
@@ -29,7 +27,6 @@
             }
             else{
                 <img src="~/css/witchNoPhoto.png" width="300" class="right-img" />
-
             }
             <p>Picture url: No picture</p>
         }
@@ -40,8 +37,9 @@
         </div>
         <p>Id: @Model.Id</p>
         <p>Name: @Model.FirstName @Model.LastName</p>
-        @if(Model.IsWizard){
-        <p>Wizard</p>
+        @if(Model.IsWizard)
+        {
+            <p>Wizard</p>
         }
         else
         {

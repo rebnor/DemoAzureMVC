@@ -11,12 +11,12 @@ namespace DemoAzureMVC.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AzureStudentsDb"),
-                    sqlOptions => sqlOptions.EnableRetryOnFailure(
-                        maxRetryCount: 3,
-                        maxRetryDelay: TimeSpan.FromSeconds(10),
-                        errorNumbersToAdd: null))
-            );
+            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AzureStudentsDb")
+                    //sqlOptions => sqlOptions.EnableRetryOnFailure(
+                    //    maxRetryCount: 3,
+                    //    maxRetryDelay: TimeSpan.FromSeconds(10),
+                    //    errorNumbersToAdd: null))
+            ));
 
             builder.Services.AddControllers();
          

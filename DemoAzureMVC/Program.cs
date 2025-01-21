@@ -17,7 +17,6 @@ namespace DemoAzureMVC
             //HttpClient-config to Localhost
             //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5293") });
 
-
             builder.Services.AddTransient<IStudent, StudentService>();
 
             var app = builder.Build();

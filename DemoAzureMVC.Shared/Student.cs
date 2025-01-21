@@ -15,9 +15,7 @@ namespace DemoAzureMVC.Shared
         public string FullName => FirstName + " " + LastName;
         public string? PictureUrl { get; set; }
 
-        // Is male/wizard if true. If false, is female/witch
+        // If true, is male/wizard. If false, is female/witch
         public bool IsWizard { get; set; }
     }
 }
-
-/* rebtech - Kiara2207 */

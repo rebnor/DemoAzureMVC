@@ -5,13 +5,10 @@
 }
 
 <h1>All Students</h1>
-
 <button class="btn-primary btn">
     <a asp-action="Create">Create New</a>
 </button>
-
 <div class="text-center pb-3">
-
     <div class="students">
         @foreach (var item in Model)
         {
@@ -24,12 +21,10 @@
                             @if (item.PictureUrl.Contains("http"))
                             {
                                 <img src="@item.PictureUrl" width="400" />
-
                             }
                             else
                             {
                                 <img src="~/css/@item.PictureUrl" width="400" class="right-img" />
-
                             }
                         }
                         else
@@ -43,7 +38,6 @@
                             }
                         }
                     </div>
-
                 </div>
             </a>
         }
