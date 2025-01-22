@@ -16,88 +16,42 @@ namespace DemoAzureMVC.API.Data
 
         public async Task<Student?> AddStudentAsync(Student student)
         {
-            try
+            if (student == null)
             {
-                if (student == null)
-                {
-                    logger.LogWarning("Attempted to add a null student.");
-                    throw new ArgumentNullException(nameof(student), "Student cannot be null");
-                }
-                appDbCtx.Students.Add(student);
-                await appDbCtx.SaveChangesAsync();
-                return student;
+                throw new ArgumentNullException(nameof(student), "Student cannot be null");
             }
-            catch (ArgumentNullException ex)
-            {
-                logger.LogWarning(ex, "Failed to add student: Null student argument.");
-                throw;
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, $"An error occurred while adding student, message: {ex.Message}");
-                throw new Exception($"An error occurred while adding student, message: {ex.Message}");
-            }
+            appDbCtx.Students.Add(student);
+            await appDbCtx.SaveChangesAsync();
+            logger.LogInformation("Added student with ID {Id}", student.Id);
+            return student;
         }
 
         public async Task DeleteStudentAsync(Student student)
         {
-            try
+            if (student == null)
             {
-                if (student == null)
-                {
-                    logger.LogWarning("Attempted to delete a null student.");
-                    throw new ArgumentNullException(nameof(student), "Student cannot be null");
-                }
-                appDbCtx.Students.Remove(student);
-                await appDbCtx.SaveChangesAsync();
+                logger.LogWarning("Attempted to delete a null student.");
+                throw new ArgumentNullException(nameof(student), "Student cannot be null");
             }
-            catch (ArgumentNullException ex)
-            {
-                logger.LogWarning(ex, "Failed to delete student: Null student argument.");
-                throw;
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, $"An error occurred while deleting student, message: {ex.Message}");
-                throw new Exception($"An error occurred while adding student, message: {ex.Message}");
-            }
+            appDbCtx.Students.Remove(student);
+            await appDbCtx.SaveChangesAsync();
         }
 
         public async Task<List<Student>?> GetAllStudentsAsync()
         {
-            try
-            {
-                return await appDbCtx.Students.ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, $"An error occurred while fetching all the students, message: {ex.Message}");
-                throw new Exception($"An error occurred while fetching all the students, message: {ex.Message}");
-            }
+            return await appDbCtx.Students.ToListAsync();
         }
 
         public async Task<Student?> GetStudentByIdAsync(int id)
         {
-            try
+            var student = await appDbCtx.Students.FirstOrDefaultAsync(s => s.Id == id);
+            if (student == null)
             {
-                var student = await appDbCtx.Students.FirstOrDefaultAsync(s => s.Id == id);
-                if (student == null)
-                {
-                    logger.LogWarning($"No student with id '{id}' found.");
-                    throw new ArgumentNullException(nameof(id), $"No student with id '{id}' found.");
-                }
-                return student;
+                logger.LogWarning($"No student with id '{id}' found.");
+                throw new KeyNotFoundException($"No student with id '{id}' found.");
+
             }
-            catch (ArgumentNullException ex)
-            {
-                logger.LogWarning(ex, $"Failed to find student: No student with id '{id}'.");
-                throw;
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, $"An error occurred while fetching student by id '{id}' , message: {ex.Message}");
-                throw new Exception($"An error occurred while fetching student by id '{id}' , message: {ex.Message}");
-            }
+            return student;
         }
 
         public async Task<Student> UpdateStudentAsync(Student student)
@@ -105,20 +59,16 @@ namespace DemoAzureMVC.API.Data
             var existingStudent = await appDbCtx.Students.FindAsync(student.Id);
             if (existingStudent == null)
             {
-                return null;
+                throw new KeyNotFoundException($"Student with ID {student.Id} not found.");
             }
-
             existingStudent.FirstName = student.FirstName;
             existingStudent.LastName = student.LastName;
             existingStudent.PictureUrl = student.PictureUrl;
             existingStudent.IsWizard = student.IsWizard;
-
             appDbCtx.Students.Update(existingStudent);
             await appDbCtx.SaveChangesAsync();
-
+            logger.LogInformation("Updated student with ID {Id}", student.Id);
             return existingStudent;
         }
-
-
     }
 }

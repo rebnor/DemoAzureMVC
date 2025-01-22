@@ -25,11 +25,6 @@ namespace DemoAzureMVC.API.Controllers
             try
             {
                 var students = await studentRepo.GetAllStudentsAsync();
-                if (students == null)
-                {
-                    logger.LogInformation("No students found.");
-                    return Ok(students);
-                }
                 return Ok(students);
             } 
             catch (Exception ex)
@@ -72,21 +67,16 @@ namespace DemoAzureMVC.API.Controllers
             {
                 if (student == null)
                 {
-                    logger.LogWarning("Attempted to add a null student.");
                     return BadRequest("Student cannot be null.");
                 }
+
                 var addedStudent = await studentRepo.AddStudentAsync(student);
-                logger.LogInformation($"Student added successfully with ID: {addedStudent.Id}");
-                return CreatedAtAction(nameof(GetStudents), new { id = addedStudent.Id }, addedStudent);
-            }
-            catch (ArgumentNullException ex)
-            {
-                logger.LogWarning(ex, "Attempted to add a null student.");
-                return BadRequest("Student cannot be null.");
+                return CreatedAtAction(nameof(GetStudentById), new { id = addedStudent.Id }, addedStudent);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"An error occurred while adding student, message: {ex.Message}");
+                logger.LogError(ex, "An error occurred while adding a student.");
+                return StatusCode(500, "Internal Server Error: Could not add student.");
             }
         }
 

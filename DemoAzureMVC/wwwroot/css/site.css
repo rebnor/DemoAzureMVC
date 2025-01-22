@@ -3,7 +3,6 @@
     font-family: "hp";
     src: url('/css/HARRYP__.TTF');
 }
-
 @font-face {
     font-family: "br";
     src: url('/css/Bokor-Regular.ttf');
@@ -13,7 +12,6 @@
     font-family: "nr";
     src: url('/css/Nushbye-Regular.otf');
 }
-
 @font-face {
     font-family: "rr";
     src: url('/css/Religius-Regular.ttf.otf');
@@ -26,7 +24,6 @@
 }
 
 /* Generall & Layout */
-
 html {
     position: relative;
     min-height: 100%;
@@ -50,7 +47,6 @@ header {
     border-bottom: 10px solid #102930;
     background-color: rgba(204,192,176);
 }
-
 
 footer {
     background-color: rgba(204,192,176);
@@ -142,10 +138,96 @@ h1 {
 
 /* Home Index */
 
-
-
-
 /* Student Index */
+
+.students {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+    .students a {
+        text-decoration: none;
+    }
+
+.student {
+    margin: 20px;
+    box-shadow: 1px 2px 5px #0F1F27;
+    width: 300px;
+    height: 350px;
+    padding: 2px;
+    position: relative;
+    background-color: white;
+    transition: filter 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.studentName {
+    font-weight: 600;
+    color: #0F1F27;
+    width: 100%;
+    text-shadow: 1px 1px 2px #D0CFBC;
+    position: absolute;
+    bottom: 9%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    z-index: 2;
+    font-family: nr;
+    letter-spacing: 2px;
+    color: #4A311E;
+}
+
+.student .image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+    .student .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+.student:hover .studentName {
+    display: block;
+}
+
+.student:hover::before {
+    content: "";
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 80%;
+    background: url("nameScroll.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+.students:hover .student {
+    filter: blur(4px);
+}
+
+    .students:hover .student:hover {
+        filter: none;
+    }
+
 .delete {
     text-shadow: 0 0 2px red;
 }
@@ -153,7 +235,7 @@ h1 {
         color: red;
         text-shadow: 0 0 2px black;
     }
-
+/*
 table {
     font-family: br;
     background-color: rgba(204,192,176, 0.8);
@@ -163,7 +245,7 @@ table {
 }
 thead {
     background-color: rgba(204,192,176, 0.6);
-}
+}*/
 
 .delete-div {
     background-color: rgba(224,102,102, 0.6);
@@ -261,8 +343,6 @@ thead {
     bottom: 10px;
 }
 
-
-
 /* Create & Update */
 .center-div {
   width: 600px;
@@ -352,28 +432,22 @@ input[type="radio"] {
         background-color: #a79f44;
         border-color: #726e28;
     }
-    /* När radio-knappen är vald (checked) */
     input[type="radio"]:checked {
         background-color: #a79f44;
         border-color: #726e28;
     }
-
-    /* Hover på vald radio-knapp */
     input[type="radio"]:checked:hover {
         background-color: #4A311E;
         border-color: #f3d6b4;
     }
-        /* När radio-knappen är markerad (checked) */
         input[type="radio"]:checked + label {
             color: #726e28;
         }
-
     input[type="radio"]:hover {
         background-color: #4A311E; 
         border-color: #f3d6b4; 
     }
 
-/* Justering av etiketten för att passa knappen */
 .form-radio label {
     margin-left: 10px;
     font-family: br;
@@ -382,102 +456,6 @@ input[type="radio"] {
     cursor: pointer;
     width: 60px;
 }
-
     .form-radio label:hover {
-        /*color: #726e28;*/ /* Färgar texten vid hover */
         text-shadow: 0 0 5px #4a3c26;
-    }
-
-
-
-
-
-
-
-.students {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-}
-
-    .students a {
-        text-decoration: none;
-    }
-
-.student {
-    margin: 20px;
-    box-shadow: 1px 2px 5px #0F1F27;
-    width: 300px;
-    height: 350px;
-    padding: 2px;
-    position: relative;
-    background-color: white;
-    transition: filter 0.3s ease;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.studentName {
-    font-weight: 600;
-    color: #0F1F27;
-    width: 100%;
-    text-shadow: 1px 1px 2px #D0CFBC;
-    position: absolute;
-    bottom: 9%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: none;
-    z-index: 2;
-    font-family: nr;
-    letter-spacing: 2px;
-    color: #4A311E;
-}
-
-.student .image {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 1; 
-}
-
-    .student .image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; 
-        object-position: center;
-    }
-
-.student:hover .studentName {
-    display: block;
-}
-
-.student:hover::before {
-    content: "";
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translateX(-50%); 
-    width: 80%;
-    height: 80%;
-    background: url("nameScroll.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    z-index: 2;
-}
-
-.students:hover .student {
-    filter: blur(4px);
-}
-
-    .students:hover .student:hover {
-        filter: none;
     }
