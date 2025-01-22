@@ -20,18 +20,18 @@
                         {
                             @if (item.PictureUrl.Contains("http"))
                             {
-                                <img src="@item.PictureUrl" width="400" />
+                                <img src="@item.PictureUrl" width="400" onerror="this.onerror=null; this.src='@(item.IsWizard ? Url.Content("~/css/wizardNoPhoto.png") : Url.Content("~/css/witchNoPhoto.png"))';" />
                             }
                             else
                             {
-                                <img src="~/css/@item.PictureUrl" width="400" class="right-img" />
+                                <img src="~/css/@item.PictureUrl" width="400" class="right-img" onerror="this.onerror=null; this.src='@(item.IsWizard ? Url.Content("~/css/wizardNoPhoto.png") : Url.Content("~/css/witchNoPhoto.png"))';" />
                             }
                         }
                         else
                         {
                             if (item.IsWizard)
                             {
-                                <img src="~/css/wizardNoPhoto.png" width="400" class="right-img" />
+                                <img src="~/css/wizardNoPhoto.png" width="400" class="right-img"  />
                             }
                             else {
                                 <img src="~/css/witchNoPhoto.png" width="400" class="right-img" />

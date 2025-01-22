@@ -10,12 +10,12 @@
         {
             @if (Model.PictureUrl.Contains("http"))
             {
-                <img src="@Model.PictureUrl" width="300" class="right-img" />
+                <img src="@Model.PictureUrl" width="300" class="right-img" onerror="this.onerror=null; this.src='@(Model.IsWizard ? Url.Content("~/css/wizardNoPhoto.png") : Url.Content("~/css/witchNoPhoto.png"))';" />
                 <p class="pic-link">Picture url: <a href="@Model.PictureUrl">@Model.PictureUrl</a></p>
             }
             else
             {
-                <img src="~/css/@Model.PictureUrl" width="300" class="right-img" />
+                <img src="~/css/@Model.PictureUrl" width="300" class="right-img" onerror="this.onerror=null; this.src='@(Model.IsWizard ? Url.Content("~/css/wizardNoPhoto.png") : Url.Content("~/css/witchNoPhoto.png"))';" />
                 <p>Picture url: @Model.PictureUrl</p>
             }
         }

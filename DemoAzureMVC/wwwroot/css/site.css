@@ -73,10 +73,11 @@ footer {
 .header-text {
     font-size: 2.5em;
     margin: 0;
-    padding-left: 15px;
+    padding-left: 20px;
     font-family: hp;
     color: #102930;
     text-shadow: 1px 1px 3px black;
+    letter-spacing: 1px;
 }
 
 .slogan-text {
@@ -86,6 +87,9 @@ footer {
     padding: 0;
     font-weight: 100;
     text-decoration: none;
+    text-shadow: none;
+    letter-spacing: 1px;
+    color: #102930;
 }
 
 .btn-primary {
@@ -136,10 +140,7 @@ h1 {
     text-shadow: 1px 1px 3px black;
 }
 
-/* Home Index */
-
 /* Student Index */
-
 .students {
     display: flex;
     flex-wrap: wrap;
@@ -156,8 +157,8 @@ h1 {
 .student {
     margin: 20px;
     box-shadow: 1px 2px 5px #0F1F27;
-    width: 300px;
-    height: 350px;
+    width: 250px;
+    height: 250px;
     padding: 2px;
     position: relative;
     background-color: white;
@@ -175,7 +176,7 @@ h1 {
     width: 100%;
     text-shadow: 1px 1px 2px #D0CFBC;
     position: absolute;
-    bottom: 9%;
+    bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
     display: none;
@@ -220,14 +221,14 @@ h1 {
     z-index: 2;
 }
 
-.students:hover .student {
+/*.students:hover .student {
     filter: blur(4px);
 }
-
     .students:hover .student:hover {
         filter: none;
-    }
+    }*/
 
+/* Delete*/
 .delete {
     text-shadow: 0 0 2px red;
 }
@@ -235,18 +236,6 @@ h1 {
         color: red;
         text-shadow: 0 0 2px black;
     }
-/*
-table {
-    font-family: br;
-    background-color: rgba(204,192,176, 0.8);
-    text-shadow: none;
-    font-size: x-large;
-    box-shadow: 0 0 5px 2px #102930;
-}
-thead {
-    background-color: rgba(204,192,176, 0.6);
-}*/
-
 .delete-div {
     background-color: rgba(224,102,102, 0.6);
     font-family: br;

@@ -1,6 +1,7 @@
 
 using DemoAzureMVC.API.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace DemoAzureMVC.API
 {
@@ -11,7 +12,8 @@ namespace DemoAzureMVC.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AzureStudentsDb")));
+            //builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AzureStudentsDb")));
+            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AzureStudentsDb"),sqlOptions => sqlOptions.EnableRetryOnFailure()));
 
             builder.Services.AddControllers();
          
