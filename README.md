@@ -1,4 +1,6 @@
-#DemoAzureMVC
+Youtube: https://youtu.be/FQiugmbKqgI
 
 My first Azure project
-MVC, API and Docker
+About: .NET, C#, HTML/CSS, MVC, API and Docker
+A site that handles Students.  
+Pictures license free AI generated.
